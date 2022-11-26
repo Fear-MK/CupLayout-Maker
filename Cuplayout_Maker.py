@@ -1,3 +1,5 @@
+import os
+
 track = {
   'abandoned boardwalk': 170,
   'abyssal ruins': 201,
@@ -219,6 +221,11 @@ track = {
   "yoshi's woolly raceway": 241
 }
 
+if not os.path.exists("tracks.txt"):
+    print("Could not find 'tracks.txt', make sure that you have a tracks.txt with your tracklist in before running the program.")
+    os.system('pause')
+    exit()
+
 f = open("tracks.txt", "r+")
 header=[67, 85, 80, 50, 0, 0, 0]
 course_val=[]
@@ -257,3 +264,7 @@ f.write(bytes(header))
 f.seek(0x08)
 f.write(bytes(course_val))
 f.close()
+
+print("Cuplayout file created.")
+
+os.system('pause')
